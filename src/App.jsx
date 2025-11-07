@@ -1,0 +1,389 @@
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+import "./index.css";
+
+const COPY = {
+  es: {
+    nav: {
+      home: "Inicio",
+      about: "Nosotros",
+      services: "Servicios",
+      why: "Por qué un asesor",
+      contact: "Contacto",
+    },
+    hero: {
+      slides: [
+        {
+          title: "Administramos su patrimonio con compromiso y transparencia",
+          p1: "Brindamos asesoramiento financiero con visión estratégica y un enfoque humano, adaptado a cada cliente.",
+        },
+        {
+          title:
+            "Ponemos nuestra experiencia y profesionalismo al servicio de sus objetivos",
+          p1: "Soluciones personalizadas que se adaptan a sus necesidades financieras.",
+        },
+        {
+          title: "Acompañamos cada decisión con datos, análisis y cercanía",
+          p1: "Para que cada movimiento tenga respaldo y contribuya a su desarrollo financiero.",
+        },
+      ],
+    },
+    about: {
+      title: "Summit Capital",
+      subtitle: "Asesoramiento financiero",
+      text1:
+        "Nuestro trabajo como firma independiente comenzó a gestarse hace más de diez años, dedicándonos a la administración de carteras de inversión de individuos e instituciones.",
+      text2:
+        "Nos especializamos en reconocer los intereses de cada cliente para lograr una planificación acorde a sus necesidades y objetivos, con el fin de encontrar las mejores opciones de inversión y desarrollar estrategias a corto y largo plazo.",
+      clientsTitle: "Clientes",
+      clientsText:
+        "Individuos, familias e instituciones confían en nuestro trabajo a la hora de gestionar sus carteras de inversión. Los acompañamos y asesoramos en cada etapa del proceso.",
+    },
+    services: {
+      title: "Nuestros Servicios",
+      items: [
+        {
+          title: "Wealth Management",
+          text: "Nos dedicamos a confeccionar carteras de inversión acordes a los perfiles y objetivos de cada inversor, brindando acompañamiento en cada etapa del proceso. Creamos estrategias de participación activa o pasiva, adaptándonos a las necesidades y el deseo de participación de cada cliente.",
+        },
+        {
+          title: "Trading",
+          text: "Ofrecemos las mejores opciones a la hora de invertir en activos financieros como acciones, bonos, commodities, derivados, ETFs, fondos mutuos, hedge funds, monedas y productos estructurados.",
+        },
+        {
+          title: "Family Offices",
+          text: "Ofrecemos un servicio integral donde llevamos a cabo la gestión de grandes patrimonios, guiando a nuestros clientes en la diligencia de asuntos hereditarios, legales y fiscales.",
+        },
+        {
+          title: "Reporting",
+          text: "La transparencia es un pilar clave en nuestro accionar: trabajamos para mantener una comunicación fluida con nuestros clientes, brindando actualizaciones y reportes detallados sobre el desempeño de sus carteras.",
+        },
+      ],
+    },
+    why: {
+      title: "¿Por qué un asesor financiero?",
+      text1:
+        "Nuestra labor principal es crear un perfil detallado de cada cliente, con el objetivo de idear una estrategia completamente personalizada, trabajando continuamente con el fin de lograr su correcta ejecución y monitoreo para alcanzar el éxito de la misma.",
+      text2:
+        "Al elegir trabajar con nosotros, usted ganará un socio estratégico para alcanzar un desarrollo financiero exitoso.",
+    },
+    contact: {
+      title: "Contáctanos",
+      nameLabel: "Nombre y Apellido",
+      emailLabel: "Email",
+      messageLabel: "Mensaje",
+      submit: "ENVIAR MENSAJE",
+      successMessage:
+        "Gracias por tu mensaje. Pronto nos pondremos en contacto.",
+    },
+    footer: {
+      rights: "© 2025 Summit Capital. Todos los derechos reservados.",
+    },
+  },
+  en: {
+    nav: {
+      home: "Home",
+      about: "About",
+      services: "Services",
+      why: "Why an advisor",
+      contact: "Contact",
+    },
+    hero: {
+      slides: [
+        {
+          title: "We manage your assets with commitment and transparency",
+          p1: "We provide financial advice with strategic vision and a human approach, tailored to each client.",
+        },
+        {
+          title:
+            "We put our experience and professionalism at the service of your goals",
+          p1: "Personalized solutions that adapt to your financial needs.",
+        },
+        {
+          title: "We accompany every decision with data, analysis, and proximity",
+          p1: "So that every move is backed and contributes to your financial development.",
+        },
+      ],
+    },
+    about: {
+      title: "Summit Capital",
+      subtitle: "Financial Advisory",
+      text1:
+        "Our independent firm began over ten years ago, dedicated to managing investment portfolios for individuals and institutions.",
+      text2:
+        "We specialize in identifying each client's goals to build investment plans aligned with their needs and objectives, developing both short and long-term strategies.",
+      clientsTitle: "Clients",
+      clientsText:
+        "Individuals, families, and institutions trust us to manage their portfolios. We accompany and advise them at every stage of the process.",
+    },
+    services: {
+      title: "Our Services",
+      items: [
+        {
+          title: "Wealth Management",
+          text: "We design investment portfolios according to each investor's profile and objectives, offering guidance throughout every stage of the process.",
+        },
+        {
+          title: "Trading",
+          text: "We offer the best options when investing in financial assets such as stocks, bonds, commodities, derivatives, ETFs, mutual funds, hedge funds, currencies, and structured products.",
+        },
+        {
+          title: "Family Offices",
+          text: "We provide a comprehensive service for managing large estates, assisting clients with inheritance, legal, and tax matters.",
+        },
+        {
+          title: "Reporting",
+          text: "Transparency is a key pillar of our work. We maintain close communication with clients, providing updates and detailed reports on their portfolio performance.",
+        },
+      ],
+    },
+    why: {
+      title: "Why a financial advisor?",
+      text1:
+        "Our main task is to create a detailed profile of each client, aiming to design a fully customized strategy, continuously working to ensure proper execution and monitoring to achieve success.",
+      text2:
+        "By choosing to work with us, you gain a strategic partner for achieving successful financial growth.",
+    },
+    contact: {
+      title: "Contact Us",
+      nameLabel: "Full Name",
+      emailLabel: "Email",
+      messageLabel: "Message",
+      submit: "SEND MESSAGE",
+      successMessage:
+        "Thank you for your message. We will contact you soon.",
+    },
+    footer: {
+      rights: "© 2025 Summit Capital. All rights reserved.",
+    },
+  },
+};
+
+function App() {
+  const [lang, setLang] = useState("es");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const t = COPY[lang];
+
+  // Auto-cambio de slides
+  useEffect(() => {
+    const interval = setInterval(
+      () => setCurrentSlide((prev) => (prev + 1) % t.hero.slides.length),
+      5000
+    );
+    return () => clearInterval(interval);
+  }, [t.hero.slides.length]);
+
+  // Animaciones reveal
+  useEffect(() => {
+    const els = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-top-right, .reveal-bottom-left"
+    );
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("is-inview");
+          else e.target.classList.remove("is-inview");
+        }),
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [lang]);
+
+  return (
+    <>
+      {/* HEADER */}
+      <header className="site-header">
+        <div className="header-inner">
+          <div className="logo">
+            SUMMIT<span>CAPITAL</span>
+          </div>
+          <nav className="main-nav">
+            <a href="#inicio">{t.nav.home}</a>
+            <a href="#nosotros">{t.nav.about}</a>
+            <a href="#servicios">{t.nav.services}</a>
+            <a href="#porque">{t.nav.why}</a>
+            <a href="#contacto">{t.nav.contact}</a>
+          </nav>
+          <div className="lang-switch">
+            <button
+              onClick={() => setLang("es")}
+              className={lang === "es" ? "active" : ""}
+            >
+              ES
+            </button>
+            <span>|</span>
+            <button
+              onClick={() => setLang("en")}
+              className={lang === "en" ? "active" : ""}
+            >
+              EN
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section id="inicio" className="hero">
+        <Swiper
+          modules={[Autoplay, EffectFade, Pagination]}
+          className="hero-slider"
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          speed={1500}
+          loop
+          autoplay={{
+            delay: 7000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            
+            clickable: true,
+          
+          }}
+          onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+        >
+          {t.hero.slides.map((_, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src="/edificio-2.jpg"
+                alt="Summit Capital"
+                className={index % 2 === 0 ? "ken-burns-out" : "ken-burns-in"}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="hero-overlay" />
+
+        <div className="hero-content-wrapper">
+          <div className="hero-text-container">
+            <div className="hero-text-wrapper">
+              {t.hero.slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`hero-inner ${
+                    currentSlide === index ? "active" : ""
+                  }`}
+                >
+                  <h1 className="hero-title">{slide.title}</h1>
+                  <p className="hero-description">{slide.p1}</p>
+                </div>
+              ))}
+            </div>
+            {/* contenedor de bullets */}
+            <div className="hero-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* NOSOTROS */}
+      <section id="nosotros" className="section section-light">
+        <div className="container about-clients-grid">
+          <div className="reveal">
+            <h2>{t.about.title}</h2>
+            <h3>{t.about.subtitle}</h3>
+            <p>{t.about.text1}</p>
+            <p>{t.about.text2}</p>
+          </div>
+          <div>
+            <img
+              src="/persona-laptop.jpg"
+              alt="Asesoramiento"
+              className="reveal-top-right"
+            />
+          </div>
+        </div>
+
+        <div className="container about-clients-grid">
+          <div>
+            <img
+              src="/cafe-reunion.jpg"
+              alt="Reunión"
+              className="reveal-bottom-left"
+            />
+          </div>
+          <div className="reveal">
+            <h3>{t.about.clientsTitle}</h3>
+            <p>{t.about.clientsText}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICIOS */}
+      <section id="servicios" className="section section-light">
+        <div className="container">
+          <h2 className="reveal">{t.services.title}</h2>
+          <div className="services-grid">
+            {t.services.items.map((s, i) => (
+              <div key={i} className="service-card reveal">
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* POR QUÉ UN ASESOR */}
+      <section id="porque" className="section split-section">
+        <div className="split-left reveal">
+          <h2>{t.why.title}</h2>
+        </div>
+        <div className="split-right reveal">
+          <p>{t.why.text1}</p>
+          <p className="highlight">{t.why.text2}</p>
+        </div>
+      </section>
+
+      {/* CONTACTO */}
+      <section id="contacto" className="section contact-section">
+        <div className="contact-overlay" />
+        <div className="contact-inner reveal">
+          <h2>{t.contact.title}</h2>
+
+          <form
+            className="contact-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert(t.contact.successMessage);
+            }}
+          >
+            <label>
+              {t.contact.nameLabel}
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              {t.contact.emailLabel}
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              {t.contact.messageLabel}
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button type="submit">{t.contact.submit}</button>
+          </form>
+        </div>
+      </section>
+
+      {/* BLOQUE AZUL CON MAIL */}
+      <section className="contact-mail">
+        <p>
+          <a href="mailto:info@summitcapital.com">info@summitcapital.com</a>
+        </p>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="site-footer">
+        <p>{t.footer.rights}</p>
+      </footer>
+    </>
+  );
+}
+
+export default App;
