@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { TrendingUp, BarChart3, Users, PieChart } from "lucide-react";
 
-
+// TEXTOS EN ESPAÑOL E INGLÉS (actualizados con detalle)
 const SERVICES_COPY = {
   es: {
     title: "Nuestros Servicios",
@@ -10,18 +10,37 @@ const SERVICES_COPY = {
       {
         title: "Wealth Management",
         text: "Nos dedicamos a confeccionar carteras de inversión acordes a los perfiles y objetivos de cada inversor, brindando acompañamiento en cada etapa del proceso. Creamos estrategias de participación activa o pasiva, adaptándonos a las necesidades y el deseo de participación de cada cliente.",
+        details: null,
       },
       {
         title: "Trading",
-        text: "Ofrecemos las mejores opciones a la hora de invertir en activos financieros como acciones, bonos, commodities, derivados, ETFs, fondos mutuos, hedge funds, monedas y productos estructurados.",
+        text: "Ofrecemos las mejores opciones a la hora de elegir invertir en activos financieros como:",
+        details: [
+          "Acciones",
+          "Bonos",
+          "Commodities",
+          "Derivados",
+          "ETFs",
+          "Fondos Mutuos",
+          "Hedge Funds",
+          "Monedas",
+          "Productos Estructurados",
+        ],
       },
       {
         title: "Family Offices",
         text: "Ofrecemos un servicio integral donde llevamos a cabo la gestión de grandes patrimonios, guiando a nuestros clientes en la diligencia de asuntos hereditarios, legales y fiscales.",
+        details: null,
       },
       {
         title: "Reporting",
-        text: "La transparencia es un pilar clave en nuestro accionar: trabajamos para mantener una comunicación fluida con nuestros clientes, brindando actualizaciones y reportes detallados sobre el desempeño de sus carteras.",
+        text: "La transparencia es un pilar clave en nuestro accionar, trabajamos dedicadamente para lograr una comunicación fluida con cada cliente, brindando actualizaciones de status y reportes llevados a cabo por nuestros asesores. De forma online, se podrá acceder a:",
+        details: [
+          "Estados de cuenta y movimientos de cuenta corriente.",
+          "Asset allocation y performance del portfolio.",
+          "Retorno de cada activo.",
+          "Análisis integral de los activos en cartera.",
+        ],
       },
     ],
   },
@@ -32,18 +51,37 @@ const SERVICES_COPY = {
       {
         title: "Wealth Management",
         text: "We design investment portfolios according to each investor's profile and objectives, offering guidance throughout every stage of the process.",
+        details: null,
       },
       {
         title: "Trading",
-        text: "We offer the best options when investing in financial assets such as stocks, bonds, commodities, derivatives, ETFs, mutual funds, hedge funds, currencies, and structured products.",
+        text: "When choosing to invest in financial assets, we offer the following options:",
+        details: [
+          "Actions",
+          "Bonds",
+          "Commodities",
+          "Derivatives",
+          "ETFs",
+          "Mutual Funds",
+          "Hedge Funds",
+          "Currencies",
+          "Structured Products",
+        ],
       },
       {
         title: "Family Offices",
         text: "We provide a comprehensive service for managing large estates, assisting clients with inheritance, legal, and tax matters.",
+        details: null,
       },
       {
         title: "Reporting",
-        text: "Transparency is a key pillar of our work. We maintain close communication with clients, providing updates and detailed reports on their portfolio performance.",
+        text: "Communication is key to our practice. When working with individuals and institutions, our goal is to achieve fluid communication with each client. We offer permanent access to online reports, status updates, and data analysis executed by our advisors. Online accessible data:",
+        details: [
+          "Account movements and statements.",
+          "Asset allocation and portfolio performance.",
+          "Asset return.",
+          "Comprehensive analysis of assets.",
+        ],
       },
     ],
   },
@@ -102,6 +140,15 @@ export default function Services({ lang }) {
 
               {/* Description */}
               <p className="service-figma-card-text">{service.text}</p>
+
+              {/* Details list (si existe) */}
+              {service.details && (
+                <ul className="service-figma-details">
+                  {service.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
+              )}
             </motion.div>
           ))}
         </div>
