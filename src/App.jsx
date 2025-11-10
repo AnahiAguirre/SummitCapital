@@ -1,8 +1,10 @@
 // src/App.jsx
 import { useEffect, useState } from "react";
 import "./index.css";
-import "./hero-figma.css"; 
+import "./hero-figma.css";
+import "./services-figma.css"; 
 import Hero from "./Hero";
+import Services from "./Services"; 
 
 const COPY = {
   es: {
@@ -23,27 +25,6 @@ const COPY = {
       clientsTitle: "Clientes",
       clientsText:
         "Individuos, familias e instituciones confían en nuestro trabajo a la hora de gestionar sus carteras de inversión. Los acompañamos y asesoramos en cada etapa del proceso.",
-    },
-    services: {
-      title: "Nuestros Servicios",
-      items: [
-        {
-          title: "Wealth Management",
-          text: "Nos dedicamos a confeccionar carteras de inversión acordes a los perfiles y objetivos de cada inversor, brindando acompañamiento en cada etapa del proceso. Creamos estrategias de participación activa o pasiva, adaptándonos a las necesidades y el deseo de participación de cada cliente.",
-        },
-        {
-          title: "Trading",
-          text: "Ofrecemos las mejores opciones a la hora de invertir en activos financieros como acciones, bonos, commodities, derivados, ETFs, fondos mutuos, hedge funds, monedas y productos estructurados.",
-        },
-        {
-          title: "Family Offices",
-          text: "Ofrecemos un servicio integral donde llevamos a cabo la gestión de grandes patrimonios, guiando a nuestros clientes en la diligencia de asuntos hereditarios, legales y fiscales.",
-        },
-        {
-          title: "Reporting",
-          text: "La transparencia es un pilar clave en nuestro accionar: trabajamos para mantener una comunicación fluida con nuestros clientes, brindando actualizaciones y reportes detallados sobre el desempeño de sus carteras.",
-        },
-      ],
     },
     why: {
       title: "¿Por qué un asesor financiero?",
@@ -83,27 +64,6 @@ const COPY = {
       clientsTitle: "Clients",
       clientsText:
         "Individuals, families, and institutions trust us to manage their portfolios. We accompany and advise them at every stage of the process.",
-    },
-    services: {
-      title: "Our Services",
-      items: [
-        {
-          title: "Wealth Management",
-          text: "We design investment portfolios according to each investor's profile and objectives, offering guidance throughout every stage of the process.",
-        },
-        {
-          title: "Trading",
-          text: "We offer the best options when investing in financial assets such as stocks, bonds, commodities, derivatives, ETFs, mutual funds, hedge funds, currencies, and structured products.",
-        },
-        {
-          title: "Family Offices",
-          text: "We provide a comprehensive service for managing large estates, assisting clients with inheritance, legal, and tax matters.",
-        },
-        {
-          title: "Reporting",
-          text: "Transparency is a key pillar of our work. We maintain close communication with clients, providing updates and detailed reports on their portfolio performance.",
-        },
-      ],
     },
     why: {
       title: "Why a financial advisor?",
@@ -181,7 +141,7 @@ function App() {
         </div>
       </header>
 
-      {/* HERO NUEVO (tipo Figma) */}
+      {/* HERO */}
       <Hero lang={lang} />
 
       {/* NOSOTROS */}
@@ -217,20 +177,8 @@ function App() {
         </div>
       </section>
 
-      {/* SERVICIOS */}
-      <section id="servicios" className="section section-light">
-        <div className="container">
-          <h2 className="reveal">{t.services.title}</h2>
-          <div className="services-grid">
-            {t.services.items.map((s, i) => (
-              <div key={i} className="service-card reveal">
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* SERVICIOS - NUEVO COMPONENTE */}
+      <Services lang={lang} />
 
       {/* POR QUÉ UN ASESOR */}
       <section id="porque" className="section split-section">

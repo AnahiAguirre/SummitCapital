@@ -1,0 +1,154 @@
+/* ============================================
+   SERVICES SECTION - ESTILO FIGMA
+   Agregá este CSS a tu archivo index.css
+   o créalo como services-figma.css e impórtalo
+   ============================================ */
+
+/* Sección principal */
+.services-figma {
+    position: relative;
+    padding: 6rem 1.5rem;
+    background-color: #F8FAFC;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Container */
+  .services-figma-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .services-figma-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .services-figma-title {
+    color: #122840;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+  }
+  
+  .services-figma-subtitle {
+    color: #64748B;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Grid de servicios */
+  .services-figma-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .services-figma-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Card individual */
+  .service-figma-card {
+    height: 100%;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  
+  .service-figma-card:hover {
+    background-color: #FDFDFD;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Icon */
+  .service-figma-icon {
+    margin-bottom: 1.5rem;
+    color: #E1B040;
+    transition: all 0.2s ease;
+  }
+  
+  .service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .service-figma-card:hover .service-figma-icon {
+    transform: scale(1.05);
+  }
+  
+  /* Card title */
+  .service-figma-card-title {
+    color: #122840;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  /* Card text */
+  .service-figma-card-text {
+    color: #64748B;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* ============================================
+     RESPONSIVE - Mobile
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .services-figma {
+      padding: 4rem 1rem;
+    }
+  
+    .services-figma-header {
+      margin-bottom: 3rem;
+    }
+  
+    .services-figma-grid {
+      gap: 2rem;
+    }
+  
+    .service-figma-card {
+      padding: 1.5rem;
+    }
+  
+    .service-figma-card-title {
+      font-size: 1.375rem;
+    }
+  
+    .service-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .services-figma {
+      padding: 3rem 1rem;
+    }
+  
+    .service-figma-card-title {
+      font-size: 1.25rem;
+    }
+  
+    .service-figma-card-text {
+      font-size: 0.9375rem;
+    }
+  }
