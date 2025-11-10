@@ -1,11 +1,8 @@
+// src/App.jsx
 import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
 import "./index.css";
+import "./hero-figma.css"; 
+import Hero from "./Hero";
 
 const COPY = {
   es: {
@@ -15,23 +12,6 @@ const COPY = {
       services: "Servicios",
       why: "Por qué un asesor",
       contact: "Contacto",
-    },
-    hero: {
-      slides: [
-        {
-          title: "Administramos su patrimonio con compromiso y transparencia",
-          p1: "Brindamos asesoramiento financiero con visión estratégica y un enfoque humano, adaptado a cada cliente.",
-        },
-        {
-          title:
-            "Ponemos nuestra experiencia y profesionalismo al servicio de sus objetivos",
-          p1: "Soluciones personalizadas que se adaptan a sus necesidades financieras.",
-        },
-        {
-          title: "Acompañamos cada decisión con datos, análisis y cercanía",
-          p1: "Para que cada movimiento tenga respaldo y contribuya a su desarrollo financiero.",
-        },
-      ],
     },
     about: {
       title: "Summit Capital",
@@ -93,23 +73,6 @@ const COPY = {
       why: "Why an advisor",
       contact: "Contact",
     },
-    hero: {
-      slides: [
-        {
-          title: "We manage your assets with commitment and transparency",
-          p1: "We provide financial advice with strategic vision and a human approach, tailored to each client.",
-        },
-        {
-          title:
-            "We put our experience and professionalism at the service of your goals",
-          p1: "Personalized solutions that adapt to your financial needs.",
-        },
-        {
-          title: "We accompany every decision with data, analysis, and proximity",
-          p1: "So that every move is backed and contributes to your financial development.",
-        },
-      ],
-    },
     about: {
       title: "Summit Capital",
       subtitle: "Financial Advisory",
@@ -166,17 +129,7 @@ const COPY = {
 
 function App() {
   const [lang, setLang] = useState("es");
-  const [currentSlide, setCurrentSlide] = useState(0);
   const t = COPY[lang];
-
-  // Auto-cambio de slides
-  useEffect(() => {
-    const interval = setInterval(
-      () => setCurrentSlide((prev) => (prev + 1) % t.hero.slides.length),
-      5000
-    );
-    return () => clearInterval(interval);
-  }, [t.hero.slides.length]);
 
   // Animaciones reveal
   useEffect(() => {
@@ -228,59 +181,8 @@ function App() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section id="inicio" className="hero">
-        <Swiper
-          modules={[Autoplay, EffectFade, Pagination]}
-          className="hero-slider"
-          effect="fade"
-          fadeEffect={{ crossFade: true }}
-          speed={1500}
-          loop
-          autoplay={{
-            delay: 7000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            
-            clickable: true,
-          
-          }}
-          onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
-        >
-          {t.hero.slides.map((_, index) => (
-            <SwiperSlide key={index}>
-              <img
-                src="/edificio-2.jpg"
-                alt="Summit Capital"
-                className={index % 2 === 0 ? "ken-burns-out" : "ken-burns-in"}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <div className="hero-overlay" />
-
-        <div className="hero-content-wrapper">
-          <div className="hero-text-container">
-            <div className="hero-text-wrapper">
-              {t.hero.slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`hero-inner ${
-                    currentSlide === index ? "active" : ""
-                  }`}
-                >
-                  <h1 className="hero-title">{slide.title}</h1>
-                  <p className="hero-description">{slide.p1}</p>
-                </div>
-              ))}
-            </div>
-            {/* contenedor de bullets */}
-            <div className="hero-pagination"></div>
-          </div>
-        </div>
-      </section>
+      {/* HERO NUEVO (tipo Figma) */}
+      <Hero lang={lang} />
 
       {/* NOSOTROS */}
       <section id="nosotros" className="section section-light">
