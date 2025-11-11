@@ -1,20 +1,14 @@
-// src/App.jsx
 import { useEffect, useState } from "react";
 import "./index.css";
 import "./hero-figma.css";
-import "./services-figma.css"; 
+import "./services-figma.css";
+import "./navbar-figma.css"; 
 import Hero from "./Hero";
-import Services from "./Services"; 
+import Services from "./Services";
+import Navbar from "./Navbar"; 
 
 const COPY = {
   es: {
-    nav: {
-      home: "Inicio",
-      about: "Nosotros",
-      services: "Servicios",
-      why: "Por qué un asesor",
-      contact: "Contacto",
-    },
     about: {
       title: "Summit Capital",
       subtitle: "Asesoramiento financiero",
@@ -47,13 +41,6 @@ const COPY = {
     },
   },
   en: {
-    nav: {
-      home: "Home",
-      about: "About",
-      services: "Services",
-      why: "Why an advisor",
-      contact: "Contact",
-    },
     about: {
       title: "Summit Capital",
       subtitle: "Financial Advisory",
@@ -110,36 +97,8 @@ function App() {
 
   return (
     <>
-      {/* HEADER */}
-      <header className="site-header">
-        <div className="header-inner">
-          <div className="logo">
-            SUMMIT<span>CAPITAL</span>
-          </div>
-          <nav className="main-nav">
-            <a href="#inicio">{t.nav.home}</a>
-            <a href="#nosotros">{t.nav.about}</a>
-            <a href="#servicios">{t.nav.services}</a>
-            <a href="#porque">{t.nav.why}</a>
-            <a href="#contacto">{t.nav.contact}</a>
-          </nav>
-          <div className="lang-switch">
-            <button
-              onClick={() => setLang("es")}
-              className={lang === "es" ? "active" : ""}
-            >
-              ES
-            </button>
-            <span>|</span>
-            <button
-              onClick={() => setLang("en")}
-              className={lang === "en" ? "active" : ""}
-            >
-              EN
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* NAVBAR - NUEVO COMPONENTE */}
+      <Navbar lang={lang} onLanguageChange={setLang} />
 
       {/* HERO */}
       <Hero lang={lang} />
@@ -177,7 +136,7 @@ function App() {
         </div>
       </section>
 
-      {/* SERVICIOS - NUEVO COMPONENTE */}
+      {/* SERVICIOS */}
       <Services lang={lang} />
 
       {/* POR QUÉ UN ASESOR */}

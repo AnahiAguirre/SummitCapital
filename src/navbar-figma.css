@@ -1,0 +1,299 @@
+/* Navbar Figma */
+.navbar-figma {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #122840;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .navbar-figma.scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .navbar-figma-container {
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .navbar-figma-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-figma-logo a {
+    display: block;
+    line-height: 0;
+  }
+  
+  .navbar-figma-logo img {
+    height: 44px;
+    width: auto;
+  }
+  
+  .navbar-figma-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-figma-link {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-figma-link:hover {
+    color: #E1B040;
+  }
+  
+  .navbar-figma-underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background-color: #E1B040;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-figma-link:hover .navbar-figma-underline {
+    transform: scaleX(1);
+  }
+  
+  .navbar-figma-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .navbar-figma-lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-figma-lang-btn:hover,
+  .navbar-figma-lang-btn.active {
+    color: #E1B040;
+  }
+  
+  .navbar-figma-lang-divider {
+    width: 1px;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .navbar-figma-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .navbar-figma-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  
+  .navbar-figma-hamburger span.open:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .navbar-figma-hamburger span.open:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .navbar-figma-hamburger span.open:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .navbar-figma-mobile {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 280px;
+    max-height: calc(100vh - 80px);
+    background-color: #122840;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    padding: 2rem 0;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .navbar-figma-mobile.open {
+    transform: translateX(0);
+  }
+  
+  .navbar-figma-mobile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-figma-mobile li {
+    margin: 0;
+  }
+  
+  .navbar-figma-mobile a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .navbar-figma-mobile a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #E1B040;
+  }
+  
+  .navbar-figma-mobile-lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .navbar-figma-mobile-lang button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-figma-mobile-lang button:hover,
+  .navbar-figma-mobile-lang button.active {
+    color: #E1B040;
+  }
+  
+  .navbar-figma-mobile-lang span {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .navbar-figma-overlay {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  @media (max-width: 1024px) {
+    .navbar-figma-menu {
+      gap: 1.25rem;
+    }
+    .navbar-figma-link {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-figma-container {
+      grid-template-columns: auto 1fr auto;
+      padding: 0 1.5rem;
+    }
+    .navbar-figma-menu,
+    .navbar-figma-lang {
+      display: none;
+    }
+    .navbar-figma-hamburger {
+      display: flex;
+    }
+    .navbar-figma-logo img {
+      height: 36px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar-figma {
+      height: 70px;
+    }
+    .navbar-figma-container {
+      padding: 0 1rem;
+    }
+    .navbar-figma-mobile {
+      top: 70px;
+      max-height: calc(100vh - 70px);
+      width: 100%;
+    }
+    .navbar-figma-overlay {
+      top: 70px;
+    }
+    .navbar-figma-logo img {
+      height: 32px;
+    }
+  }
+  
+  body {
+    padding-top: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      padding-top: 70px;
+    }
+  }
+  
+  .hero-figma {
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    .hero-figma {
+      margin-top: -70px;
+      padding-top: 70px;
+    }
+  }
