@@ -188,7 +188,7 @@ export default function Hero({ lang }) {
           </motion.div>
         </motion.div>
 
-        {/* Indicador de Scroll (flecha) - SOLO VISIBLE EN EL HERO */}
+        {/* Indicador de Scroll (flecha) - SOLO VISIBLE DENTRO DEL HERO */}
         {showScroll && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}

@@ -38,8 +38,15 @@ export default function Navbar({ lang, onLanguageChange }) {
   }, []);
 
   // Cerrar menú mobile al hacer clic en un link
-  const handleLinkClick = () => {
+  const handleLinkClick = (href) => {
     setIsMobileMenuOpen(false);
+    // Small delay para que cierre el menú antes de scrollear
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -98,7 +105,13 @@ export default function Navbar({ lang, onLanguageChange }) {
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.href} onClick={handleLinkClick}>
+              <a 
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(item.href);
+                }}
+              >
                 {item.text}
               </a>
             </li>
