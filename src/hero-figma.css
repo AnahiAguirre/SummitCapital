@@ -1,205 +1,204 @@
 /* ============================================
-   HERO SECTION - ESTILO FIGMA
-   Agregá este CSS a tu archivo index.css
-   o créalo como hero-figma.css e impórtalo
+   HERO SECTION - ESTILO FIGMA (ACTUALIZADO)
    ============================================ */
 
 /* Contenedor principal del hero */
 .hero-figma {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  /* Contenedor de la imagen de fondo */
-  .hero-figma-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  
-  .hero-figma-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Overlay gradient oscuro */
-  .hero-figma-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background: linear-gradient(
-      180deg,
-      rgba(18, 40, 64, 0.7) 0%,
-      rgba(18, 40, 64, 0.9) 100%
-    );
-  }
-  
-  /* Contenedor de partículas */
-  .hero-figma-particles {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  
-  /* Partícula individual dorada */
-  .hero-figma-particle {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(225, 176, 64, 0.6);
-    box-shadow: 0 0 8px rgba(225, 176, 64, 0.8);
-  }
-  
-  /* Contenedor principal del contenido */
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Contenedor de la imagen de fondo */
+.hero-figma-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-figma-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay gradient oscuro */
+.hero-figma-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 40, 64, 0.7) 0%,
+    rgba(18, 40, 64, 0.9) 100%
+  );
+}
+
+/* Contenedor de partículas */
+.hero-figma-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Partícula individual dorada */
+.hero-figma-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(225, 176, 64, 0.6);
+  box-shadow: 0 0 8px rgba(225, 176, 64, 0.8);
+}
+
+/* Contenedor principal del contenido */
+.hero-figma-content {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+/* Wrapper interno para el texto */
+.hero-figma-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Sección de marca/logo */
+.hero-figma-brand {
+  margin-bottom: 2rem;
+}
+
+.hero-figma-brand h1 {
+  color: #E1B040;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+}
+
+.hero-figma-brand-line {
+  width: 6rem;
+  height: 2px;
+  background-color: #E1B040;
+  margin: 0 auto;
+}
+
+/* Título principal */
+.hero-figma-title {
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+
+/* Subtítulo */
+.hero-figma-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* Contenedor de bullets (paginación) */
+.hero-figma-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Bullet individual */
+.hero-figma-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  padding: 0;
+}
+
+/* Bullet activo */
+.hero-figma-bullet.active {
+  width: 40px;
+  background-color: #E1B040;
+}
+
+/* Indicador de scroll (flecha) */
+.hero-figma-scroll {
+  position: fixed;
+  bottom: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.hero-figma-scroll:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+
+.hero-figma-scroll:hover svg {
+  opacity: 1;
+}
+
+.hero-figma-scroll:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.hero-figma-scroll svg {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE - Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
   .hero-figma-content {
-    position: relative;
-    z-index: 30;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 5rem 1.5rem;
+    padding: 2rem 1rem;
   }
-  
-  /* Wrapper interno para el texto */
-  .hero-figma-inner {
-    max-width: 64rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  /* Sección de marca/logo */
+
   .hero-figma-brand {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
-  
+
   .hero-figma-brand h1 {
-    color: #E1B040;
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
   }
-  
-  .hero-figma-brand-line {
-    width: 6rem;
-    height: 2px;
-    background-color: #E1B040;
-    margin: 0 auto;
-  }
-  
-  /* Título principal */
-  .hero-figma-title {
-    color: #ffffff;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 1.5rem 0;
-  }
-  
-  /* Subtítulo */
-  .hero-figma-subtitle {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(1rem, 2vw, 1.375rem);
-    font-weight: 300;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-  }
-  
-  /* Contenedor de bullets (paginación) */
+
   .hero-figma-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
   }
-  
-  /* Bullet individual */
-  .hero-figma-bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    padding: 0;
+}
+
+@media (max-width: 480px) {
+  .hero-figma-brand h1 {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
   }
-  
-  /* Bullet activo */
-  .hero-figma-bullet.active {
-    width: 40px;
-    background-color: #E1B040;
+
+  .hero-figma-subtitle {
+    font-size: 1rem;
   }
-  
-  /* Indicador de scroll (flecha) */
+
   .hero-figma-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    bottom: 1.5rem;
   }
-  
-  .hero-figma-scroll:hover {
-    transform: translateX(-50%) scale(1.15);
-  }
-  
-  .hero-figma-scroll:hover svg {
-    opacity: 1;
-  }
-  
-  .hero-figma-scroll:active {
-    transform: translateX(-50%) scale(0.95);
-  }
-  
-  .hero-figma-scroll svg {
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-  }
-  
-  /* ============================================
-     RESPONSIVE - Mobile
-     ============================================ */
-  
-  @media (max-width: 768px) {
-    .hero-figma-content {
-      padding: 3rem 1rem;
-    }
-  
-    .hero-figma-brand {
-      margin-bottom: 2rem;
-    }
-  
-    .hero-figma-brand h1 {
-      font-size: 1.25rem;
-    }
-  
-    .hero-figma-pagination {
-      margin-top: 2.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-figma-brand h1 {
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-    }
-  
-    .hero-figma-subtitle {
-      font-size: 1rem;
-    }
-  
-    .hero-figma-scroll {
-      bottom: 1.5rem;
-    }
-  }
+}

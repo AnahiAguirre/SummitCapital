@@ -241,7 +241,7 @@
   
   @media (max-width: 768px) {
     .navbar-figma-container {
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 1fr auto;
       padding: 0 1.5rem;
     }
     .navbar-figma-menu,

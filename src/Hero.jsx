@@ -51,9 +51,10 @@ const generateParticles = (count) =>
 export default function Hero({ lang }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [particles] = useState(() => generateParticles(30));
+  const [showScroll, setShowScroll] = useState(true);
 
   const totalSlides = 3;
-  const content = HERO_COPY[lang].slides[activeSlide]; // 👈 Usar el slide activo
+  const content = HERO_COPY[lang].slides[activeSlide];
 
   // Auto-cambio de slide cada 5 segundos
   useEffect(() => {
@@ -64,6 +65,21 @@ export default function Hero({ lang }) {
     return () => clearInterval(interval);
   }, []);
 
+  // Detectar si estamos dentro del hero y mostrar/ocultar flecha
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById("inicio");
+      if (!heroSection) return;
+
+      const heroRect = heroSection.getBoundingClientRect();
+      // Mostrar flecha solo si el hero está visible en pantalla
+      setShowScroll(heroRect.bottom > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section id="inicio" className="hero-figma">
       {/* Background Image */}
@@ -72,7 +88,6 @@ export default function Hero({ lang }) {
           src="https://images.unsplash.com/photo-1564613655478-0e0ec220b23f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBjaXR5JTIwc2t5bGluZSUyMHN1bnNldHxlbnwxfHx8fDE3NjI4MDY1MDB8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Financial city skyline"
           onError={(e) => {
-            // Fallback a tu imagen local si la de Unsplash falla
             e.target.src = '/edificio-2.jpg';
           }}
         />
@@ -173,42 +188,45 @@ export default function Hero({ lang }) {
           </motion.div>
         </motion.div>
 
-        {/* Indicador de Scroll (flecha) */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 1.2,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            repeatDelay: 0.5,
-          }}
-          className="hero-figma-scroll"
-          onClick={() => {
-            const nosotrosSection = document.getElementById('nosotros');
-            if (nosotrosSection) {
-              nosotrosSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-          style={{ cursor: 'pointer' }}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        {/* Indicador de Scroll (flecha) - SOLO VISIBLE EN EL HERO */}
+        {showScroll && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{
+              duration: 0.8,
+              delay: 1.2,
+              repeat: Infinity,
+              repeatType: 'loop',
+              repeatDelay: 0.5,
+            }}
+            className="hero-figma-scroll"
+            onClick={() => {
+              const nosotrosSection = document.getElementById('nosotros');
+              if (nosotrosSection) {
+                nosotrosSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            style={{ cursor: 'pointer' }}
           >
-            <path
-              d="M12 5V19M12 19L5 12M12 19L19 12"
-              stroke="#E1B040"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 5V19M12 19L5 12M12 19L19 12"
+                stroke="#E1B040"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+        )}
       </div>
     </section>
   );
