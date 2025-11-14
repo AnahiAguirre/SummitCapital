@@ -15,7 +15,7 @@ const MENU_COPY = {
       { text: "Home", href: "#inicio" },
       { text: "About", href: "#nosotros" },
       { text: "Services", href: "#servicios" },
-      { text: "Why an advisor", href: "#porque" },
+      { text: "Why an advisor?", href: "#porque" },
       { text: "Contact", href: "#contacto" },
     ],
   },
