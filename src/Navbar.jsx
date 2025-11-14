@@ -6,7 +6,7 @@ const MENU_COPY = {
       { text: "Inicio", href: "#inicio" },
       { text: "Nosotros", href: "#nosotros" },
       { text: "Servicios", href: "#servicios" },
-      { text: "Por qué un asesor", href: "#porque" },
+      { text: "¿Por qué un asesor?", href: "#porque" },
       { text: "Contacto", href: "#contacto" },
     ],
   },
