@@ -157,33 +157,43 @@ function App() {
           <h2>{t.contact.title}</h2>
 
           <form
-            className="contact-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert(t.contact.successMessage);
-            }}
-          >
-            <label>
-              {t.contact.nameLabel}
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              {t.contact.emailLabel}
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              {t.contact.messageLabel}
-              <textarea name="message" rows="4" required></textarea>
-            </label>
-            <button type="submit">{t.contact.submit}</button>
-          </form>
+  className="contact-form"
+  action="https://formsubmit.co/info@summitcapital.com.ar"
+  method="POST"
+>
+  {/* Anti-spam y redirección */}
+  <input type="hidden" name="_captcha" value="false" />
+  <input
+    type="hidden"
+    name="_next"
+    value="https://summitcapital.com.ar/gracias"
+  />
+
+  <label>
+    {t.contact.nameLabel}
+    <input type="text" name="nombre" required />
+  </label>
+
+  <label>
+    {t.contact.emailLabel}
+    <input type="email" name="email" required />
+  </label>
+
+  <label>
+    {t.contact.messageLabel}
+    <textarea name="mensaje" rows="4" required></textarea>
+  </label>
+
+  <button type="submit">{t.contact.submit}</button>
+</form>
+
         </div>
       </section>
 
       {/* BLOQUE AZUL CON MAIL */}
       <section className="contact-mail">
         <p>
-          <a href="mailto:info@summitcapital.com">info@summitcapital.com</a>
+          <a href="mailto:info@summitcapital.com.ar">info@summitcapital.com.ar</a>
         </p>
       </section>
 
