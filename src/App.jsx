@@ -156,17 +156,19 @@ function App() {
         <div className="contact-inner reveal">
           <h2>{t.contact.title}</h2>
 
-          <form
+<form
   className="contact-form"
   action="https://formsubmit.co/info@summitcapital.com.ar"
   method="POST"
 >
-  {/* Anti-spam y redirección */}
+  {/* Anti-spam */}
   <input type="hidden" name="_captcha" value="false" />
-  <input
-    type="hidden"
-    name="_next"
-    value="https://summitcapital.com.ar/gracias"
+
+  {/* Autorespuesta por mail al usuario */}
+  <input 
+    type="hidden" 
+    name="_autoresponse" 
+    value="Mensaje enviado, gracias." 
   />
 
   <label>
@@ -186,6 +188,7 @@ function App() {
 
   <button type="submit">{t.contact.submit}</button>
 </form>
+
 
         </div>
       </section>
