@@ -6,6 +6,7 @@ import "./navbar-figma.css";
 import Hero from "./Hero";
 import Services from "./Services";
 import Navbar from "./Navbar"; 
+ import "./contact-form.css";
 
 const COPY = {
   es: {
@@ -73,6 +74,135 @@ const COPY = {
     },
   },
 };
+
+// Componente de Formulario de Contacto
+function ContactForm({ lang, t }) {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    mensaje: "",
+  });
+  const [status, setStatus] = useState(""); // "", "loading", "success", "error"
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append("nombre", formData.nombre);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("mensaje", formData.mensaje);
+      formDataObj.append("_captcha", "false");
+      formDataObj.append(
+        "_autoresponse",
+        lang === "es" 
+          ? "Gracias por tu mensaje. Pronto nos pondremos en contacto."
+          : "Thank you for your message. We will contact you soon."
+      );
+
+      const response = await fetch(
+        "https://formsubmit.co/info@summitcapital.com.ar",
+        {
+          method: "POST",
+          body: formDataObj,
+        }
+      );
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ nombre: "", email: "", mensaje: "" });
+        // Limpiar el mensaje de éxito después de 5 segundos
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        throw new Error("Error en la respuesta del servidor");
+      }
+    } catch (error) {
+      setStatus("error");
+      setErrorMsg(
+        lang === "es"
+          ? "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo."
+          : "There was an error sending your message. Please try again."
+      );
+    }
+  };
+
+  return (
+    <>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <label>
+          {t.contact.nameLabel}
+          <input
+            type="text"
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+          />
+        </label>
+
+        <label>
+          {t.contact.emailLabel}
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+          />
+        </label>
+
+        <label>
+          {t.contact.messageLabel}
+          <textarea
+            name="mensaje"
+            rows="4"
+            value={formData.mensaje}
+            onChange={handleChange}
+            required
+            disabled={status === "loading"}
+          ></textarea>
+        </label>
+
+        <button 
+          type="submit" 
+          disabled={status === "loading"}
+          className={status === "loading" ? "loading" : ""}
+        >
+          {status === "loading" 
+            ? (lang === "es" ? "Enviando..." : "Sending...") 
+            : t.contact.submit}
+        </button>
+      </form>
+
+      {/* Mensaje de éxito */}
+      {status === "success" && (
+        <div className="form-success-message">
+          <p>✓ {t.contact.successMessage}</p>
+        </div>
+      )}
+
+      {/* Mensaje de error */}
+      {status === "error" && (
+        <div className="form-error-message">
+          <p>✕ {errorMsg}</p>
+        </div>
+      )}
+    </>
+  );
+}
 
 function App() {
   const [lang, setLang] = useState("es");
@@ -155,41 +285,7 @@ function App() {
         <div className="contact-overlay" />
         <div className="contact-inner reveal">
           <h2>{t.contact.title}</h2>
-
-<form
-  className="contact-form"
-  action="https://formsubmit.co/info@summitcapital.com.ar"
-  method="POST"
->
-  {/* Anti-spam */}
-  <input type="hidden" name="_captcha" value="false" />
-
-  {/* Autorespuesta por mail al usuario */}
-  <input 
-    type="hidden" 
-    name="_autoresponse" 
-    value="Mensaje enviado, gracias." 
-  />
-
-  <label>
-    {t.contact.nameLabel}
-    <input type="text" name="nombre" required />
-  </label>
-
-  <label>
-    {t.contact.emailLabel}
-    <input type="email" name="email" required />
-  </label>
-
-  <label>
-    {t.contact.messageLabel}
-    <textarea name="mensaje" rows="4" required></textarea>
-  </label>
-
-  <button type="submit">{t.contact.submit}</button>
-</form>
-
-
+          <ContactForm lang={lang} t={t} />
         </div>
       </section>
 
