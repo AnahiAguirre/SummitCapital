@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, BarChart3, Users, PieChart } from "lucide-react";
+import { TrendingUp, BarChart3, PieChart } from "lucide-react";
 
 // TEXTOS EN ESPAÑOL E INGLÉS (actualizados con detalle)
 const SERVICES_COPY = {
@@ -26,11 +26,6 @@ const SERVICES_COPY = {
           "Monedas",
           "Productos Estructurados",
         ],
-      },
-      {
-        title: "Family Offices",
-        text: "Ofrecemos un servicio integral donde llevamos a cabo la gestión de grandes patrimonios, guiando a nuestros clientes en la diligencia de asuntos hereditarios, legales y fiscales.",
-        details: null,
       },
       {
         title: "Reporting",
@@ -69,11 +64,6 @@ const SERVICES_COPY = {
         ],
       },
       {
-        title: "Family Offices",
-        text: "We provide a comprehensive service for managing large estates, assisting clients with inheritance, legal, and tax matters.",
-        details: null,
-      },
-      {
         title: "Reporting",
         text: "Communication is key to our practice. When working with individuals and institutions, our goal is to achieve fluid communication with each client. We offer permanent access to online reports, status updates, and data analysis executed by our advisors. Online accessible data:",
         details: [
@@ -91,7 +81,6 @@ const SERVICES_COPY = {
 const serviceIcons = [
   <PieChart className="service-icon" strokeWidth={1.5} />,
   <BarChart3 className="service-icon" strokeWidth={1.5} />,
-  <Users className="service-icon" strokeWidth={1.5} />,
   <TrendingUp className="service-icon" strokeWidth={1.5} />,
 ];
 
