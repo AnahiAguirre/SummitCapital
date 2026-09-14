@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://summitcapital.com.ar/sitemap.xml
