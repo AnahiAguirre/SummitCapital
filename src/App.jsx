@@ -247,6 +247,7 @@ function App() {
               src="/persona-laptop.jpg"
               alt="Asesoramiento"
               className="reveal-top-right"
+              loading="lazy"
             />
           </div>
         </div>
@@ -257,6 +258,7 @@ function App() {
               src="/cafe-reunion.jpg"
               alt="Reunión"
               className="reveal-bottom-left"
+              loading="lazy"
             />
           </div>
           <div className="reveal">

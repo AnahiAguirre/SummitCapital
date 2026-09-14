@@ -85,11 +85,9 @@ export default function Hero({ lang }) {
       {/* Background Image */}
       <div className="hero-figma-bg">
         <img
-          src="https://images.unsplash.com/photo-1564613655478-0e0ec220b23f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBjaXR5JTIwc2t5bGluZSUyMHN1bnNldHxlbnwxfHx8fDE3NjI4MDY1MDB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+          src="/hero-skyline.jpg"
           alt="Financial city skyline"
-          onError={(e) => {
-            e.target.src = '/edificio-2.jpg';
-          }}
+          fetchPriority="high"
         />
       </div>
 
