@@ -208,6 +208,11 @@ function App() {
   const [lang, setLang] = useState("es");
   const t = COPY[lang];
 
+  // Mantener el atributo lang del documento sincronizado con el idioma elegido
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   // Animaciones reveal
   useEffect(() => {
     const els = document.querySelectorAll(
